@@ -7,6 +7,7 @@ export default function Main() {
     const [ingredients, setIngredients] = React.useState([])
 
     const [recipe, setRecipe] = React.useState(false);
+    const recipeSection = React.useRef(null);
 
     async function getRecipe() {
         const recipeMarkdown = await getRecipeFromBackend(ingredients)
@@ -47,6 +48,7 @@ export default function Main() {
         </form>
         {ingredients.length > 0 && 
             <IngredientsList 
+                ref={recipeSection}
                 ingredients={ingredients}
                 getRecipe={getRecipe} 
             />
